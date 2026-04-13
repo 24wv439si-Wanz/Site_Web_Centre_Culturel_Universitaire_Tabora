@@ -1,11 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
+    <script>
+        // Ce script s'exécute avant même que le CSS ne soit totalement lu
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CCU Tabora | Accueil</title>
+    <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="images/backg.JPG">
 </head>
-<body>
-    
+<body class="home-page">
+
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.jpg" alt="Logo Tabora" class="logo-img">
+                    <div class="logo-text">
+                        <span class="main-name">TABORA</span>
+                        <span class="sub-name">CENTER</span>
+                    </div>
+                </a>
+            </div>
+            <div class="header-tagline">
+                <span class="red-dot">•</span>
+                <p>Explorez nos efforts pour accompagner les étudiants</p>
+            </div>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="centre.html">Le Centre</a></li>
+                <li><a href="activite.html">Activités</a></li>
+                <li><a href="bibliotheque.html">Bibliothèque</a></li>
+                <li><a href="academique.html">Universitaire</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="theme-switch-container">
+                    <button id="theme-switch" aria-label="Changer le thème">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Réouverture du Club de Lecture</h1>
+                <p>Le club de lecture est relancé afin de promouvoir la lecture et favoriser les échanges entre étudiants autour des œuvres culturelles et scientifiques.</p>
+            </div>
+        </section>
+
+        <section class="news-belt">
+            <div class="container">
+                <div class="belt-header">
+                    <h2>Actualités en images</h2>
+                    <div class="belt-nav">
+                        <button id="prevNews"><i class="fas fa-chevron-left"></i></button>
+                        <button id="nextNews"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="belt-wrapper">
+                    <div id="beltTrack" class="belt-track">
+                        <div class="news-card"><div class="news-card-img"><img src="images/info1.jpg"><span>Chantier</span></div><div class="news-card-body"><h4>Info 1</h4><p>Description 1...</p></div></div>
+                        <div class="news-card"><div class="news-card-img"><img src="images/info2.jpg"><span>Événement</span></div><div class="news-card-body"><h4>Info 2</h4><p>Description 2...</p></div></div>
+                        <div class="news-card"><div class="news-card-img"><img src="images/info3.jpg"><span>Culture</span></div><div class="news-card-body"><h4>Info 3</h4><p>Description 3...</p></div></div>
+                        <div class="news-card"><div class="news-card-img"><img src="images/info4.jpg"><span>Académique</span></div><div class="news-card-body"><h4>Info 4</h4><p>Description 4...</p></div></div>
+                        <div class="news-card"><div class="news-card-img"><img src="images/info5.jpg"><span>Social</span></div><div class="news-card-body"><h4>Info 5</h4><p>Description 5...</p></div></div>
+                        <div class="news-card"><div class="news-card-img"><img src="images/info6.jpg"><span>Vie au centre</span></div><div class="news-card-body"><h4>Info 6</h4><p>Description 6...</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pillars-section">
+            <div class="container">
+                <div class="section-intro">
+                    <h2>L'excellence au cœur de Tabora</h2>
+                    <p>De la recherche universitaire aux activités sportives, découvrez ce qui fait la force de notre communauté.</p>
+                </div>
+
+                <div class="pillars-grid">
+                    <a href="academique.html" class="pillar-card">
+                        <div class="pillar-img" style="background-image: url('images/academique.JPG');"></div>
+                        <div class="pillar-info">
+                            <h3>Recherche & Universitaire</h3>
+                            <p>Accédez aux publications et travaux de nos chercheurs.</p>
+                            <span class="pillar-link">En savoir plus →</span>
+                        </div>
+                    </a>
+
+                    <a href="bibliotheque.html" class="pillar-card">
+                        <div class="pillar-img" style="background-image: url('images/biblio.jpg');"></div>
+                        <div class="pillar-info">
+                            <h3>Médiathèque</h3>
+                            <p>Plus de 100 ouvrages et ressources numériques à votre disposition.</p>
+                            <span class="pillar-link">Explorer le catalogue →</span>
+                        </div>
+                    </a>
+
+                    <a href="activite.html" class="pillar-card">
+                        <div class="pillar-img" style="background-image: url('images/sport.jpg');"></div>
+                        <div class="pillar-info">
+                            <h3>Activités & Sport</h3>
+                            <p>Un esprit sain dans un corps sain : découvrez nos clubs.</p>
+                            <span class="pillar-link">Voir le programme →</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="upcoming-event">
+            <div class="container">
+                <div class="event-card">
+                    <div class="slider-wrapper">
+                        <div class="event-slide active">
+                            <div class="slide-content">
+                                <div class="event-image">
+                                    <img src="images/club-lec.jpg" alt="Club de Lecture">
+                                    <div class="event-tag">Culture</div>
+                                </div>
+                                <div class="event-details">
+                                    <div class="slide-flex">
+                                        <div class="event-date"><span class="day">25</span><span class="month">Avr</span></div>
+                                        <div class="event-info">
+                                            <h2>Club de Lecture : Les Misérables Victor Hugo</h2>
+                                            <p>Venez échanger autour de l'œuvre majeure de Victor Hugo ce mois-ci.</p>
+                                            <div class="event-meta">
+                                                <span><i class="fa-solid fa-location-dot"></i> Bibliothèque Tabora</span>
+                                                <span><i class="fa-solid fa-clock"></i> 15:00 - 17:00</span>
+                                            </div>
+                                            <a href="agenda.html" class="btn-event">S'inscrire</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-slide">
+                            <div class="slide-content">
+                                <div class="event-image">
+                                    <img src="images/excu.jpg" alt="Excursion">
+                                    <div class="event-tag">Découverte</div>
+                                </div>
+                                <div class="event-details">
+                                    <div class="slide-flex">
+                                        <div class="event-date"><span class="day">26</span><span class="month">Avr</span></div>
+                                        <div class="event-info">
+                                            <h2>Speciale Excursion : Kansebula</h2>
+                                            <p>Respire La Nature, Vis l'Aventure</p>
+                                            <div class="event-meta">
+                                                <span><i class="fa-solid fa-location-dot"></i> Messe : Oratoir CCUT</span>
+                                                <span><i class="fa-solid fa-location-dot"></i> Départ : Parking CCUT</span>
+                                                <span><i class="fa-solid fa-clock"></i> 07:00 - 18:00</span>
+                                            </div>
+                                            <a href="agenda.html" class="btn-event">Réserver ma place</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-slide">
+                            <div class="slide-content">
+                                <div class="event-image">
+                                    <img src="images/karaoke.jpg" alt="Karaoké">
+                                    <div class="event-tag">Loisir</div>
+                                </div>
+                                <div class="event-details">
+                                    <div class="slide-flex">
+                                        <div class="event-date"><span class="day">11</span><span class="month">Avr</span></div>
+                                        <div class="event-info">
+                                            <h2>Karaoké Challenge : ONLY HAPPY SONGS</h2>
+                                            <p>Défendez les couleurs de votre faculté en chanson dans une ambiance festive.</p>
+                                            <div class="event-meta">
+                                                <span><i class="fa-solid fa-location-dot"></i> Foyer des Étudiants</span>
+                                                <span><i class="fa-solid fa-clock"></i> 17:50 - 19:00</span>
+                                            </div>
+                                            <a href="agenda.html" class="btn-event">Plus d'information</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-slide">
+                            <div class="slide-content">
+                                <div class="event-image">
+                                    <img src="images/reco.jpg" alt="Récollection Spiritualité">
+                                    <div class="event-tag">Spiritualité</div>
+                                </div>
+                                <div class="event-details recollection-details">
+                                    <h2>Pâcque est une victoire : celle de la vie sur la mort</h2>
+                                    <div class="recollection-grid">
+                                        <div class="recollection-item">
+                                            <div class="reco-date">18 <small>Avr</small></div>
+                                            <div class="reco-info">
+                                                <h4>Spécial Étudiants</h4>
+                                                <p><i class="fa-solid fa-location-dot"></i> Centre Tabora </p>
+                                                <p><i class="fa-solid fa-clock"></i> 16:00 - 18:30</p>
+                                            </div>
+                                        </div>
+                                        <div class="recollection-item">
+                                            <div class="reco-date">16 <small>Avr</small></div>
+                                            <div class="reco-info">
+                                                <h4>Pour Professionnels</h4>
+                                                <p><i class="fa-solid fa-location-dot"></i> Centre de Retraite</p>
+                                                <p><i class="fa-solid fa-clock"></i> 17:00 - 19:30</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="agenda.html" class="btn-event">Plus d'infos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <section class="news-section">
+            <div class="container">
+                <div class="news-header">
+                    <h2>Dernières Actualités</h2>
+                    <a href="activite.html" class="view-all">Toutes les news →</a>
+                </div>
+                
+                <div class="news-grid">
+                    <article class="news-item">
+                        <div class="news-date">12 Avr 2026</div>
+                        <h3>Lancement du nouveau programme de recherche sur l'intelligence culturelle</h3>
+                        <p>Le Centre Tabora s'associe à des experts mondiaux pour explorer les liens entre tradition et technologie.</p>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-date">08 Avr 2026</div>
+                        <h3>Résultats des compétitions universitaires de Basketball</h3>
+                        <p>Nos étudiants ont brillamment représenté les couleurs de Tabora lors du tournoi régional.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <a href="index.html">
+                            <div class="logo-text">
+                                <span class="main-name">TABORA</span>
+                                <span class="sub-name">CENTRE UNIVERSITAIRE</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="brand-description">
+                        Un cadre d'excellence dédié à la formation intégrale, académique et humaine des futurs leaders de Lubumbashi.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="academique.html">Académique</a></li>
+                        <li><a href="activite.html">Activités</a></li>
+                        <li><a href="bibliotheque.html">Bibliothèque</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Mama Yemo 2238b, Lubumbashi</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:contact@centretabora.org">contact@centretabora.org</a></p>
+                    <p><i class="fas fa-phone"></i> +243 000 000 000</p>
+                    
+                    <a href="https://www.google.com/maps/search/?api=1&query=Mama+Yemo+2238b+Lubumbashi" target="_blank" class="btn-maps-footer">
+                        <i class="fas fa-directions"></i> Itinéraire Maps
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container bottom-flex">
+                    <p>© 2024 Centre Universitaire Tabora. Tous droits réservés.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="JS/script.js"></script>
 </body>
 </html>

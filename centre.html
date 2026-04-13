@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script>
+        // Ce script s'exécute avant même que le CSS ne soit totalement lu
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Centre | CCU Tabora</title>
+    <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="scrolled">
+        <div class="header-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.jpg" alt="Logo Tabora" class="logo-img">
+                    <div class="logo-text">
+                        <span class="main-name">TABORA</span>
+                        <span class="sub-name">CENTER</span>
+                    </div>
+                </a>
+            </div>
+            <div class="header-tagline">
+                <span class="red-dot">•</span>
+                <p>Explorez nos efforts pour accompagner les étudiants</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="centre.html" class="active">Le Centre</a></li>
+                <li><a href="activite.html">Activités</a></li>
+                <li><a href="bibliotheque.html">Bibliothèque</a></li>
+                <li><a href="academique.html">Universitaire</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="theme-switch-container">
+                    <button id="theme-switch" aria-label="Changer le thème">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding-top: 140px; min-height: 80vh;">
+        <div class="container">
+            <h1 class="section-title">Le Centre Culturel</h1>
+            <p>Le Centre Culturel Universitaire Tabora est un espace d'échange, de culture et de formation humaine pour les étudiants de Lubumbashi.</p>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <a href="index.html">
+                            <div class="logo-text">
+                                <span class="main-name">TABORA</span>
+                                <span class="sub-name">CENTRE UNIVERSITAIRE</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="brand-description">
+                        Un cadre d'excellence dédié à la formation intégrale, académique et humaine des futurs leaders de Lubumbashi.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="academique.html">Académique</a></li>
+                        <li><a href="activite.html">Activités</a></li>
+                        <li><a href="bibliotheque.html">Bibliothèque</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Mama Yemo 2238b, Lubumbashi</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:contact@centretabora.org">contact@centretabora.org</a></p>
+                    <p><i class="fas fa-phone"></i> +243 000 000 000</p>
+                    
+                    <a href="https://www.google.com/maps/search/?api=1&query=Mama+Yemo+2238b+Lubumbashi" 
+                    target="_blank" 
+                    class="btn-maps-footer">
+                        <i class="fas fa-directions"></i> Itinéraire Maps
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container bottom-flex">
+                    <p>&copy; 2024 Centre Universitaire Tabora. Tous droits réservés.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <script src="JS/script.js"></script>
+</body>
+</html>
