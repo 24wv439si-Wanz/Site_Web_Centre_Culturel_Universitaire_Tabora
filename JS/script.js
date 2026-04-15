@@ -1,15 +1,16 @@
 /**
- * 1. GESTION DU THÈME (APPLICATION IMMÉDIATE)
+ * 1. GESTION DU THÈME
  */
 (function() {
-    const theme = localStorage.getItem('theme') || 'light';
+    // Si aucune préférence n'est enregistrée, on choisit 'dark' par défaut
+    const theme = localStorage.getItem('theme') || 'dark'; 
     document.documentElement.setAttribute('data-theme', theme);
 })();
 
 function initTheme() {
     const themeBtn = document.getElementById('theme-switch');
     if (themeBtn) {
-        // Mise à jour de l'icône au démarrage
+        // On récupère le thème actuel (qui sera 'dark' par défaut maintenant)
         const theme = document.documentElement.getAttribute('data-theme');
         updateThemeIcon(theme);
 
@@ -21,7 +22,7 @@ function initTheme() {
             updateThemeIcon(newTheme);
         });
     }
-}
+} 
 
 function updateThemeIcon(theme) {
     const themeBtn = document.getElementById('theme-switch');
@@ -30,7 +31,7 @@ function updateThemeIcon(theme) {
 }
 
 /**
- * 2. SLIDER NEWS BELT (VERSION LENTE ET MAJESTUEUSE)
+ * 2. SLIDER NEWS BELT (TA VERSION ORIGINALE - FLUIDITÉ MAXIMALE)
  */
 function initNewsBelt() {
     const track = document.getElementById('beltTrack');
@@ -40,7 +41,6 @@ function initNewsBelt() {
 
     if (!track || cards.length === 0) return;
 
-    // --- SYSTÈME DE CLONAGE ---
     const firstClone1 = cards[0].cloneNode(true);
     const firstClone2 = cards[1].cloneNode(true);
     const lastClone1 = cards[cards.length - 2].cloneNode(true);
@@ -58,30 +58,24 @@ function initNewsBelt() {
     function updateSlide(animate = true) {
         if (animate) {
             isTransitioning = true;
-            
-            // ÉTAPE 1 : DISPARITION TRÈS DOUCE (1.2 seconde pour s'effacer)
+            // Étape 1 : Disparition
             track.style.transition = "opacity 1.2s ease-in-out, filter 1.2s ease-in-out";
             track.style.filter = "brightness(0) blur(8px)";
             track.style.opacity = "0";
             
-            // ÉTAPE 2 : DÉPLACEMENT PENDANT LE NOIR (On attend la fin du fondu)
             setTimeout(() => {
                 track.style.transition = "none";
                 track.style.transform = `translateX(calc(-${index * 100}% - ${index * gap}px))`;
-                
-                track.offsetHeight; // Force le rendu
+                track.offsetHeight; 
 
-                // ÉTAPE 3 : RÉAPPARITION TRÈS LENTE (2 secondes pour une clarté totale)
-                // Utilisation de cubic-bezier pour un effet "soyeux"
+                // Étape 3 : Réapparition
                 track.style.transition = "opacity 2s cubic-bezier(0.4, 0, 0.2, 1), filter 2s cubic-bezier(0.4, 0, 0.2, 1)";
                 track.style.filter = "brightness(1) blur(0px)";
                 track.style.opacity = "1";
                 
-                // On ne redonne la main à l'utilisateur qu'une fois la magie finie
                 setTimeout(() => { isTransitioning = false; }, 2000);
             }, 1200); 
         } else {
-            // Recalage instantané sans animation (pour la boucle infinie)
             track.style.transition = "none";
             track.style.transform = `translateX(calc(-${index * 100}% - ${index * gap}px))`;
             track.style.filter = "brightness(1)";
@@ -95,10 +89,12 @@ function initNewsBelt() {
         updateSlide(true);
         
         if (index > 3) { 
+            // On réduit légèrement le temps (de 3300ms à 3200ms) 
+            // pour que le saut invisible se fasse pile à la fin de l'apparition
             setTimeout(() => {
                 index = 1;
                 updateSlide(false);
-            }, 3300); // 1.2s (out) + 2s (in) + un petit battement
+            }, 3200); 
         }
     }
 
@@ -111,14 +107,13 @@ function initNewsBelt() {
             setTimeout(() => {
                 index = 3;
                 updateSlide(false);
-            }, 3300);
+            }, 3200);
         }
     }
 
     if (nextBtn) nextBtn.onclick = () => { moveNext(); resetTimer(); };
     if (prevBtn) prevBtn.onclick = () => { movePrev(); resetTimer(); };
 
-    // AUTOMATISME : 6 secondes de lecture + ~3s de transition = 9000ms
     let autoTimer = setInterval(moveNext, 9500);
     function resetTimer() {
         clearInterval(autoTimer);
@@ -130,11 +125,96 @@ function initNewsBelt() {
 }
 
 /**
- * 3. INITIALISATION GÉNÉRALE
+ * 3. GESTION DU HEADER (FIXÉ)
+ */
+function handleHeader() {
+    const header = document.querySelector('header');
+    if (!header) return;
+    const isHomePage = document.body.classList.contains('home-page');
+    const checkScroll = () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            if (isHomePage) header.classList.remove('scrolled');
+            else header.classList.add('scrolled');
+        }
+    };
+    checkScroll();
+    window.addEventListener('scroll', checkScroll);
+}
+
+/**
+ * 4. SLIDER ÉVÉNEMENTS (RÉTABLI)
+ */
+function startEventSlider() {
+    const slides = document.querySelectorAll('.event-slide');
+    if (slides.length <= 1) return;
+    let current = 0;
+    setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+    }, 5000);
+}
+
+/**
+ * 5. RECHERCHE BIBLIOTHÈQUE
+ */
+function initLibrarySearch() {
+    const searchInput = document.getElementById('searchInput');
+    if (!searchInput) return;
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        const books = document.querySelectorAll('.book-item');
+        let count = 0;
+        books.forEach(book => {
+            const title = book.querySelector('h4').innerText.toLowerCase();
+            if (title.includes(query)) {
+                book.style.display = "block";
+                count++;
+            } else {
+                book.style.display = "none";
+            }
+        });
+        const counter = document.getElementById('counter');
+        if (counter) counter.innerText = `${count} livre(s) trouvé(s)`;
+    });
+}
+
+/**
+ * INITIALISATION GÉNÉRALE
  */
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
+    handleHeader();
     initNewsBelt();
-    if (typeof handleHeader === 'function') handleHeader();
-    if (typeof startEventSlider === 'function') startEventSlider();
+    startEventSlider();
+    initLibrarySearch();
 });
+
+function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    const clockElement = document.getElementById('live-clock');
+    if(clockElement) {
+        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+}
+
+// Mettre à jour la date aussi
+function updateDate() {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const today  = new Date();
+    const dateElement = document.getElementById('current-date');
+    if(dateElement) {
+        dateElement.textContent = today.toLocaleDateString('fr-FR', options);
+    }
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+updateDate();
+

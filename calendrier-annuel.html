@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier Annuel | CCU Tabora</title>
+    <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="annual-page">
+    <header class="scrolled">
+        <div class="header-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.jpg" alt="Logo Tabora" class="logo-img">
+                    <div class="logo-text">
+                        <span class="main-name">TABORA</span>
+                        <span class="sub-name">CENTER</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <nav>
+            
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="calendrier-annuel.html" class="active">Annuel</a></li>
+                <li class="theme-switch-container">
+                    <button id="theme-switch"><i class="fa-solid fa-moon"></i></button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding-top: 140px; background-color: var(--bg-body);">
+        <div class="container">
+            <div class="annual-header">
+                <h1 class="playfair-title">Calendrier Académique 2025-2026</h1>
+                <div class="harvard-separator"></div>
+                <p class="annual-intro">Retrouvez toutes les dates clés de l'année : conférences, vacances et événements sociaux.</p>
+            </div>
+
+            <div class="calendar-table">
+    
+                <div class="month-row">
+                    <div class="month-name">Avril 2026</div>
+                    <div class="month-events">
+                        <div class="event-line recollection-line">
+                            <span class="event-day">16</span>
+                            <span class="event-desc"><i class="fas fa-cross"></i> Récollection mensuelle : Méditation et Silence</span>
+                        </div>
+                        <div class="event-line recollection-line">
+                            <span class="event-day">18</span>
+                            <span class="event-desc"><i class="fas fa-cross"></i>Récollection : Accompagnement spirituel</span>
+                        </div>
+                        
+                        <div class="event-line">
+                            <span class="event-day">25</span>
+                            <span class="event-desc">Club de lecture </span>
+                        </div>
+                        <div class="event-line red-event">
+                            <span class="event-day">26</span>
+                            <span class="event-desc">Spéciale Excursion Kansebule</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-row">
+                    <div class="month-name">Mai 2026</div>
+                    <div class="month-events">
+                        <div class="event-line">
+                            <span class="event-day">02</span>
+                            <span class="event-desc">Séminaire de Leadership et Éthique</span>
+                        </div>
+                        <div class="event-line recollection-line">
+                            <span class="event-day">06</span>
+                            <span class="event-desc"><i class="fas fa-cross"></i> Récollection mensuelle : Éthique et Travail</span>
+                        </div>
+                        <div class="event-line">
+                            <span class="event-day">10</span>
+                            <span class="event-desc">Concours d'Éloquence Tabora</span>
+                        </div>
+                        <div class="event-line recollection-line">
+                            <span class="event-day">20</span>
+                            <span class="event-desc"><i class="fas fa-cross"></i> Récollection : Vie et Engagement</span>
+                        </div>
+                        <div class="event-line">
+                            <span class="event-day">22</span>
+                            <span class="event-desc">Sortie Culturelle Annuelle</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-row">
+                    <div class="month-name">Juin 2026</div>
+                    <div class="month-events">
+                        <div class="event-line recollection-line">
+                            <span class="event-day">03</span>
+                            <span class="event-desc"><i class="fas fa-cross"></i> Récollection mensuelle : Bilan et Intériorité</span>
+                        </div>
+                        <div class="event-line">
+                            <span class="event-day">05</span>
+                            <span class="event-desc">Exposition des projets étudiants</span>
+                        </div>
+                        <div class="event-line recollection-line">
+                            <span class="event-day">10</span>
+                            <span class="event-desc"><i class="fas fa-cross"></i> Récollection : Préparation aux examens</span>
+                        </div>
+                        <div class="event-line exam-event">
+                            <span class="event-day">15 - 25</span>
+                            <span class="event-desc">Atelier Informatique Embarqué</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="JS/script.js"></script>
+</body>
+</html>
